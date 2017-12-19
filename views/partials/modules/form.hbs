@@ -1,0 +1,137 @@
+{{#eq this.field_type 'input'}}
+    <input
+      type="{{#if this.type}}{{this.type}}{{else}}text{{/if}}"
+      name="{{#if this.name}}{{this.name}}{{else}}field_name{{/if}}"
+      {{#if this.placeholder}}
+        placeholder="{{this.placeholder}}"
+      {{/if}}
+      {{#if this.class}}
+        class="{{this.class}}"
+      {{/if}}
+      {{#if this.id}}
+        id="{{this.id}}"
+      {{/if}}
+    >
+{{/eq}}
+
+{{#eq this.field_type 'label'}}
+  <label
+    {{#if this.label_for}}for="{{this.label_for}}"{{/if}}
+    {{#if this.label_class}}class="{{this.label_class}}"{{/if}}
+    {{#if this.label_id}}class="{{this.label_id}}"{{/if}}
+    >
+    {{this.context}}
+  </label>
+{{/eq}}
+
+
+{{#eq this.field_type 'input-file'}}
+  <div class="input-type-file {{this.field_class}}">
+    <input type="file" name="{{this.name}}" id="{{this.id}}" class="inputfile {{this.input_class}}" data-multiple-caption="{count} files selected"
+      multiple />
+    <label for="{{this.id}}" class="primary">
+      <span></span>
+      <strong class="primary">
+        <i class="fa fa-upload"></i>{{this.field_label}}</strong>
+    </label>
+  </div>
+{{/eq }}
+
+{{#eq this.field_type 'input-radio'}}
+  <div class="radio {{this.field_class}}">
+    <input type="radio" id="{{#if this.id}}{{this.id}}{{else}}radio_id{{/if}}" name="{{this.name}}" {{#if this.input_class}}class="{{this.input_class}}"{{/if}}>
+    <label for="{{#if this.id}}{{this.id}}{{else}}radio_id{{/if}}" {{#if this.label_class}}class="{{this.label_class}}"{{/if}}> {{#if this.field_label}} {{this.field_label}} {{else}} Please add title in <em>(field_label)</em>{{/if }} </label>
+  </div>
+{{/eq }}
+
+{{#eq this.field_type 'input-checkbox'}}
+  <div class="checkbox {{this.class}}">
+    <input type="checkbox" id="{{#if this.id}}{{this.id}}{{else}}checkbox_id{{/if}}" name="{{this.name}}">
+    <label for="{{#if this.id}}{{this.id}}{{else}}checkbox_id{{/if}}" {{#if this.label_class}}class="{{this.label_class}}"{{/if}}> {{#if this.field_label}} {{this.field_label}} {{else}} Please add title in <em>(field_label)</em>{{/if }} </label>
+  </div>
+{{/eq }}
+
+
+
+
+
+{{#eq this.field_type 'select'}}
+  <div class="input-type-select {{this.parent_class}}">
+    <select name="{{this.name}}" id="{{this.select_id}}" class="{{this.select_class}}">
+      <option value="">{{#if this.placeholder}}{{this.placeholder}}{{else}}Select{{/if}}</option>
+      {{#each this.select_values}}
+        <option value="{{dashcase this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+{{/eq}}
+
+{{#eq this.field_type 'form-field-input'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    {{#if this.field_label}}
+      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+    {{/if}}
+    {{> modules/form field_type='input' type=this.type name=this.name class=this.input_class id=this.input_id}}
+  </div>
+{{/eq}}
+
+{{#eq this.field_type 'form-field-select'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    {{#if this.field_label}}
+      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+    {{/if}}
+    {{> modules/form field_type='select' name=this.name id=this.id class=this.input_class placeholder=this.placeholder}}
+  </div>
+{{/eq}}
+
+{{#eq this.field_type 'form-field-textarea'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    {{#if this.field_label}}
+      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+    {{/if}}
+    <textarea name="{{this.name}}" id="{{this.textarea_id}}" placeholder="{{this.placeholder}}"></textarea>
+  </div>
+{{/eq}}
+
+
+{{#eq this.field_type 'form-field-datepicker'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}> {{#if this.field_label}} {{this.field_label}} {{else}} Datepicker {{/if}}</label>
+    <div class="input-group {{this.input_group_class}}">
+      <input type="text" placeholder="Datepicker" data-toggle="datepicker">
+      <div class="addon datepicker-trigger">
+        <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+{{/eq}}
+
+{{#eq this.field_type 'form-field-timepicker'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    <label {{#if this.label_class}}class="{{this.label_class}}" {{/if}}>{{#if this.field_label}} {{this.field_label}} {{else}} Timepicker {{/if}}</label>
+    <div class="input-group {{this.input_group_class}}">
+      <input type="text" placeholder="12:00 am" class="timepicker">
+      <div class="addon timepicker-trigger">
+        <i class="fa fa-clock-o"></i>
+      </div>
+    </div>
+  </div>
+{{/eq}}
+
+{{#eq this.field_type 'form-field-addon'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    {{#if this.field_label}}
+      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+    {{/if}}
+    <div class="input-group {{this.input_group_class}}">
+      {{#eq this.placement 'start'}}
+        <div class="addon">{{this.addon_text}}</div>
+        {{> modules/form field_type="input" type=this.type name=this.name class=this.input_class id=this.input_id }}
+      {{/eq}}
+      {{#eq this.placement 'end'}}
+        {{> modules/form field_type="input" type=this.type name=this.name class=this.input_class id=this.input_id }}
+        <div class="addon">{{this.addon_text}}</div>
+      {{/eq}}
+    </div>
+  </div>
+{{/eq}}

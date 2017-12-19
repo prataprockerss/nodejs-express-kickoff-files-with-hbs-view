@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  {{> layout/head}}
+  <body>
+    {{> modules/loader }}
+    <div class="wrapper">
+       {{> layout/header}}
+      <div class="content-area">
+        {{> layout/nav}}
+        <section class="main-cnt">
+          <div class="container">
+            {{#eq breadcrumbs false}}
+            {{else}}
+              {{> modules/breadcrumbs}}
+            {{/eq}}
+            {{#if title}}
+              <h1>{{title}}</h1>
+            {{/if}}
+            {{{body}}}
+          </div>
+        </section>
+      </div>
+       {{> layout/footer}}
+    </div>
+    {{#if scripts}}
+      {{#each scripts}}
+        <script src="/scripts/ext/{{this}}.js"></script>
+      {{/each }}
+    {{/if}}
+    <script src="/scripts/common.js"></script>
+    <script src="/scripts/dev.js"></script>
+  </body>
+  
+</html>

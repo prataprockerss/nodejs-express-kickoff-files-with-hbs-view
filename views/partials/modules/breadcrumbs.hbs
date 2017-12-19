@@ -1,0 +1,14 @@
+{{#if breadcrumbs}}
+  <div class="breadcrumb">
+    {{#each (before breadcrumbs 1)}}
+      <div class="breadcrumb-item">
+        <a href="/{{this}}">{{this}}</a>
+      </div>
+    {{/each}}
+    <div class="breadcrumb-item">
+      {{last breadcrumbs}}
+    </div>
+  </div>
+{{else}}
+  <p> breadcrumbs Object is not parsed into route</p>
+{{/if}}

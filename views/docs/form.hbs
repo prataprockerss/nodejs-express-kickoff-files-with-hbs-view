@@ -1,0 +1,157 @@
+<article class="box">
+  <header class="box-header">
+    Form Heading
+  </header>
+  <main class="box-content">
+    <div class="check-form">
+      <div class="form-layout">
+        <div class="form-row">
+          {{> modules/form field_type="form-field-input" type="number" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Nuber"}}
+          {{> modules/form field_type="form-field-input" type="text" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Text"}}
+          {{> modules/form field_type="form-field-input" type="email" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Email"}}
+        </div>
+        <div class="form-row">
+          <div class="form-field grid-6">
+            {{> modules/form field_type="input-file" name='image' id='profile_pic' field_label='Upload Profile Pic'}}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="">Gender</label>
+            <div class="radios">
+              {{> modules/form field_type="input-radio" name="gender" id="male" field_label="Male" }}
+              {{> modules/form field_type="input-radio" name="gender" id="female" field_label="Female" }}
+              {{> modules/form field_type="input-radio" name="gender" id="both" field_label="Both" }}
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="">Label</label>
+            <div class="checkboxes">
+              {{> modules/form field_type="input-checkbox" id="Checkbox_1" field_label="Check box" name="Checkbox_1" }}
+              {{> modules/form field_type="input-checkbox" id="Checkbox_2" field_label="Check box" name="Checkbox_2" }}
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="">Gender</label>
+            <div class="radios custom">
+              {{> modules/form field_type="input-radio" name="gender_c" id="custom_male" field_label="Male (Custom Design)" }}
+              {{> modules/form field_type="input-radio" name="gender_c" id="custom_female" field_label="Female (Custom Design)" }}
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="">Cehckbox</label>
+            <div class="checkboxes custom">
+              {{> modules/form field_type="input-checkbox" id="custom_checkbox_1" field_label="Checkbox (Custom Design)" name="custom_checkbox_2" }}
+              {{> modules/form field_type="input-checkbox" id="custom_checkbox_2" field_label="Checkbox (Custom Design)" name="custom_checkbox_2" }}
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field mandatory">
+            <label>Label</label>
+            {{> modules/form field_type="select" select_values=dob_days name='dob_day'}}
+          </div>
+          {{> modules/form field_type="form-field-select" field_label="Month" placeholder="Select Month" name="dob_month" select_values=dob_months}}
+        </div>
+        <div class="form-row">
+          {{> modules/form field_type="form-field-textarea" name="textarea_name" field_label="Textarea" placeholder="Sample textarea"}}
+        </div>
+        <div class="form-row">
+          <div class="form-field mandatory">
+            <label>NicEdit Text editor</label>
+            <textarea name="nice-editor" class="nice-editor" id="nice-editor-id" cols="30" rows="10" placeholder="Placeholder Text"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          {{> modules/form field_type="form-field-datepicker" mandatory="yes"}}
+          <div class="sub-form-row grid-8">
+            {{> modules/form field_type="form-field-timepicker" mandatory="yes" field_class="grid-3"}}
+            {{> modules/form field_type="form-field-datepicker" mandatory="yes" field_label="Datepicker" field_class="grid-5"}}
+            {{> modules/form field_type="form-field-timepicker" mandatory="yes" field_class="grid-4"}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</article>
+<article class="box">
+  <header class="box-header">
+    Form input group
+  </header>
+  <main class="box-content">
+    <div class="form-layout">
+      <div class="form-row">
+        {{> modules/form field_type="form-field-addon" type="text" placement="start" addon_text="@" field_label="Tag id" }}
+        {{> modules/form field_type="form-field-addon" type="text" placement="end" addon_text="@example.com" field_label="Tag id" }}
+      </div>
+    </div>
+  </main>
+</article>
+<article class="box">
+  <header class="box-header">
+    form sizes
+  </header>
+  <main class="box-content">
+    <div class="form-layout">
+      <div class="form-row">
+         {{> modules/form field_type="form-field-input" field_class="lg" type="number" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Nuber"}}
+      </div>
+      <div class="form-row">
+        {{> modules/form field_type="form-field-input" type="number" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Nuber"}}
+      </div>
+      <div class="form-row">
+        {{> modules/form field_type="form-field-input" field_class="sm" type="number" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Nuber"}}
+      </div>
+    </div>
+  </main>
+</article>
+<article class="box">
+  <header class="box-header">
+    Buttons
+  </header>
+  <main class="box-content">
+    <input type="submit" class="box-btn primary" value="Primary">
+
+    <input type="submit" class="box-btn secondary" value="Secondary">
+    <input type="submit" class="box-btn success" value=" Success">
+    <input type="submit" class="box-btn danger" value="Danger">
+    <input type="submit" class="box-btn alert" value="Alert">
+    <input type="submit" class="box-btn warning" value="Warning">
+    <div class="clear40"></div>
+    <input type="submit" class="box-btn primary lg" value="Primary Large">
+    <input type="submit" class="box-btn primary sm" value="Primary small">
+    <input type="submit" class="box-btn primary xs" value="Primary Extra small">
+    <div class="clear40"></div>
+    <input type="submit" class="box-btn primary plain" value="Primary Plain">
+  </main>
+</article>
+<article class="box">
+  <header class="box-header">
+    Search box
+  </header>
+  <main class="box-content">
+    <div class="form-layout ">
+      <form action="">
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <button class="search-btn">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="clear40"></div>
+    <div class="form-layout ">
+      <form action="">
+        <div class="search-bar rounded">
+          <input type="text" placeholder="Search">
+          <button class="search-btn">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</article>

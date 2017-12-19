@@ -1,0 +1,72 @@
+.nav
+  height: 100%
+  +mq(max,1023px)
+    position: fixed
+    left: -100%
+    top: 0
+    +transition
+    max-width: 300px
+    z-index: 500
+    padding-top: em(100)
+    +prefix('box-shadow',  0 0 20px #e9edef)
+  >ul
+    background-color: #fff
+    border-top: 1px solid #f2f4f6
+    height: 100%
+  li
+    border-bottom: 1px solid #e9edef
+    position: relative
+    &:hover,&.active
+      >a
+        color: #263238
+        .icon
+          svg
+            *
+              fill: #03a9f4
+              // stroke: #03a9f4
+      .sub-nav
+        opacity: 1
+        left: 100%
+        visibility: visible
+    .sub-nav
+      background-color: #fff
+      position: absolute
+      left: 80%
+      top: 0
+      width: 200px
+      z-index: 6
+      +prefix('box-shadow',  5px 0 20px #e9edef)
+      border-left: 2px solid darken(#e9edef,30)
+      opacity: 0
+      visibility: hidden
+      +transition
+      li
+        a
+          display: block
+          padding: em(10)
+
+
+    a
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      align-items: center
+      color: #78909c
+      font-size: em(14)
+      font-weight: 400
+      letter-spacing: 1px
+      text-transform: uppercase
+      position: relative
+      padding: em(15) em(25)
+
+      .icon
+        width: 24px
+        font-size: 24px
+        text-align: center
+        svg
+          *
+            fill: #78909c
+            // stroke: #78909c
+      .text
+        flex: 1
+        margin-left: em(23)

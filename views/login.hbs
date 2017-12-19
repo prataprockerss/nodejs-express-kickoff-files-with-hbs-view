@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{> layout/head}}
+<body>
+  <div class="auth-box">
+    <header class="auth-header">
+      Dashboard Login
+    </header>
+    <main class="auth-content">
+      <div class="check-form">
+        <div class="form-layout">
+          <div class="form-row">
+            <div class="form-field madatory">
+              <div class="input-group">
+                <div class="addon">
+                  <i class="fa fa-envelope-o"></i>
+                </div>
+                <input type="text" placeholder="Username">
+              </div>
+              <span class="error">Please enter valid email id</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field madatory">
+              <div class="input-group">
+                <div class="addon">
+                  <i class="fa fa-lock"></i>
+                </div>
+                <input type="password" placeholder="Password">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field madatory">
+              <input type="submit" value="Login" class="box-btn primary full">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

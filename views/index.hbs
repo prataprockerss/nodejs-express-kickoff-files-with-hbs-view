@@ -1,0 +1,12 @@
+<ul class="page-list">
+  {{#each pageList}}
+    <li>
+      <div class="heading">
+        {{camelcase  this.title}}
+      </div>
+      <div class="cta">
+        <a href="{{this.link}}" target="_blank">html </a>
+      </div>
+    </li>
+  {{/each }}
+</ul>
