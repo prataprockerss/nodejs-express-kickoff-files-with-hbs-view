@@ -1193,6 +1193,8 @@ button.box-btn, input[type="button"].box-btn, input[type="reset"].box-btn, input
     margin: 0; }
   button.box-btn .fa, input[type="button"].box-btn .fa, input[type="reset"].box-btn .fa, input[type="submit"].box-btn .fa, a.box-btn .fa {
     padding-right: 0.3125em; }
+  button.box-btn.alert, input[type="button"].box-btn.alert, input[type="reset"].box-btn.alert, input[type="submit"].box-btn.alert, a.box-btn.alert {
+    margin-bottom: 0; }
 button.full, input[type="button"].full, input[type="reset"].full, input[type="submit"].full, a.full {
   display: block;
   width: 100%;

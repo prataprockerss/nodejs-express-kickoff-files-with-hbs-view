@@ -11,14 +11,14 @@
       {{#if this.id}}
         id="{{this.id}}"
       {{/if}}
-    >
+    />
 {{/eq}}
 
 {{#eq this.field_type 'label'}}
   <label
     {{#if this.label_for}}for="{{this.label_for}}"{{/if}}
     {{#if this.label_class}}class="{{this.label_class}}"{{/if}}
-    {{#if this.label_id}}class="{{this.label_id}}"{{/if}}
+    {{#if this.label_id}}id="{{this.label_id}}"{{/if}}
     >
     {{this.context}}
   </label>
@@ -38,21 +38,18 @@
 {{/eq }}
 
 {{#eq this.field_type 'input-radio'}}
-  <div class="radio {{this.field_class}}">
-    <input type="radio" id="{{#if this.id}}{{this.id}}{{else}}radio_id{{/if}}" name="{{this.name}}" {{#if this.input_class}}class="{{this.input_class}}"{{/if}}>
-    <label for="{{#if this.id}}{{this.id}}{{else}}radio_id{{/if}}" {{#if this.label_class}}class="{{this.label_class}}"{{/if}}> {{#if this.field_label}} {{this.field_label}} {{else}} Please add title in <em>(field_label)</em>{{/if }} </label>
+  <div class="radio {{this.parent_class}}">
+    {{> modules/form field_type="input" type="radio" placeholder=this.placeholder class=this.input_class id=this.id }}
+    {{> modules/form field_type="label" label_for=this.id class=this.label_class id=this.label_id context=this.field_label}}
   </div>
 {{/eq }}
 
 {{#eq this.field_type 'input-checkbox'}}
-  <div class="checkbox {{this.class}}">
-    <input type="checkbox" id="{{#if this.id}}{{this.id}}{{else}}checkbox_id{{/if}}" name="{{this.name}}">
-    <label for="{{#if this.id}}{{this.id}}{{else}}checkbox_id{{/if}}" {{#if this.label_class}}class="{{this.label_class}}"{{/if}}> {{#if this.field_label}} {{this.field_label}} {{else}} Please add title in <em>(field_label)</em>{{/if }} </label>
+  <div class="checkbox {{this.parent_class}}">
+    {{> modules/form field_type="input" type="checkbox" placeholder=this.placeholder class=this.input_class id=this.id }}
+    {{> modules/form field_type="label" label_for=this.id class=this.label_class id=this.label_id context=this.field_label}}
   </div>
 {{/eq }}
-
-
-
 
 
 {{#eq this.field_type 'select'}}
@@ -69,7 +66,7 @@
 {{#eq this.field_type 'form-field-input'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
     {{/if}}
     {{> modules/form field_type='input' type=this.type name=this.name class=this.input_class id=this.input_id}}
   </div>
@@ -78,7 +75,7 @@
 {{#eq this.field_type 'form-field-select'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
     {{/if}}
     {{> modules/form field_type='select' name=this.name id=this.id class=this.input_class placeholder=this.placeholder}}
   </div>
@@ -87,7 +84,7 @@
 {{#eq this.field_type 'form-field-textarea'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
     {{/if}}
     <textarea name="{{this.name}}" id="{{this.textarea_id}}" placeholder="{{this.placeholder}}"></textarea>
   </div>
@@ -121,7 +118,7 @@
 {{#eq this.field_type 'form-field-addon'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}>{{this.field_label}}</label>
+      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
     {{/if}}
     <div class="input-group {{this.input_group_class}}">
       {{#eq this.placement 'start'}}

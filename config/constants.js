@@ -22,7 +22,7 @@ module.exports = {
     },
     {
       title: 'Form',
-      link: '/form'
+      link: '/docs/form'
     },
     {
       title: 'Docs',
