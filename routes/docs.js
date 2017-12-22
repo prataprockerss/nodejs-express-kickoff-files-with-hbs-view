@@ -24,6 +24,14 @@ router.get('/form', (req, res) => {
   res.render('docs/form', form_params)
 })
 
+router.get('/tabs', (req, res) =>{
+  let tabs_prams = {
+    title: 'Tabnination',
+    breadcrumbs: JSH.breadcrumbs(req.originalUrl)
+  }
+  res.render('docs/tabs', tabs_prams)
+})
+
 router.get('/breadcrumbs/:level1/:level2', (req, res) => {
   res.render('docs/breadcurmbs', {
     breadcrumbs: JSH.breadcrumbs(req.originalUrl)

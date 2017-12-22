@@ -189,6 +189,16 @@ $(window).on('load', function () {
   checkElement($('.nice-editor'),function(){
     new nicEditor().panelInstance('nice-editor-id');
   })
+  checkElement($('.tab-holder'),function(){
+    $('.tab-links li').on('click',function(e){
+      let parent = $(this).parents('.tab-holder');
+      parent.find('.tab-links li').removeClass('active');
+      $(this).addClass('active');
+      let relation  = $(this).attr('data-target');
+      parent.find('.tab-results .tab').hide();
+      parent.find('.tab-results .tab#'+relation).show();
+    });
+  })
 });
 
 

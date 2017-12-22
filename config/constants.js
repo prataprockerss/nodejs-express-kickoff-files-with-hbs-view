@@ -27,6 +27,10 @@ module.exports = {
     {
       title: 'Docs',
       link: '/docs'
+    },
+    {
+      title: 'Tabination',
+      link: '/docs/tabs'
     }
   ],
 }

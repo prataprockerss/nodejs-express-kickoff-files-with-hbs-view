@@ -4404,6 +4404,32 @@ table {
   border-width: 0 5px 5px;
   border-bottom-color: #000; }
 
+.tab-holder {
+  margin-bottom: 1.25em; }
+  .tab-holder .container {
+    width: 100%; }
+  .tab-holder .tab-links ul {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex; }
+    .tab-holder .tab-links ul li {
+      padding: 0.625em 1.25em;
+      cursor: pointer;
+      background-color: white; }
+      .tab-holder .tab-links ul li.active {
+        background-color: #ff782d;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1em;
+        font-weight: 300; }
+  .tab-holder .tab-results {
+    background-color: white;
+    padding: 0.625em 1.25em; }
+    .tab-holder .tab-results .tab {
+      display: none; }
+      .tab-holder .tab-results .tab.active {
+        display: block; }
+
 .wrapper.dashboard .main-cnt {
   width: 100%; }
 @media (max-width: 1023px) {
