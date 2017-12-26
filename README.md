@@ -48,4 +48,3 @@ https://github.com/prataprockerss/nodejs-express-kickoff-files-with-hbs-view
    npm start
 ```
 5. Start using partials and create your files 
-
