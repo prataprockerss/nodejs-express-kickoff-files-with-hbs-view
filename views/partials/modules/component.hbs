@@ -1,0 +1,15 @@
+{{#eq this.name "page_not_found"}}
+  <div class="page-not-found">
+    <div class="message">
+      <p>
+        {{this.context}}
+      </p>
+    </div>
+  </div>
+{{/eq}}
+
+{{#eq this.name 'unit'}}
+  {{#eq this.currency 'naira'}}
+  <span>&#x20A6;</span>
+  {{/eq}}
+{{/eq}}

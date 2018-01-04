@@ -1,12 +1,15 @@
 {{#if breadcrumbs}}
   <div class="breadcrumb">
-    {{#each (before breadcrumbs 1)}}
+    <div class="breadcrumb-item">
+      <a href="/">Home</a>
+    </div>
+    {{#each breadcrumbs}}
       <div class="breadcrumb-item">
-        <a href="/{{this}}">{{this}}</a>
+        <a href="{{this.url}}">{{this.name}}</a>
       </div>
     {{/each}}
     <div class="breadcrumb-item">
-      {{last breadcrumbs}}
+      {{title}}
     </div>
   </div>
 {{else}}

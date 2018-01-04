@@ -1,24 +1,42 @@
 {{#eq this.field_type 'input'}}
-    <input
-      type="{{#if this.type}}{{this.type}}{{else}}text{{/if}}"
-      name="{{#if this.name}}{{this.name}}{{else}}field_name{{/if}}"
-      {{#if this.placeholder}}
-        placeholder="{{this.placeholder}}"
-      {{/if}}
-      {{#if this.class}}
-        class="{{this.class}}"
-      {{/if}}
-      {{#if this.id}}
-        id="{{this.id}}"
-      {{/if}}
-    />
+  <input
+    type="{{#if this.type}}{{this.type}}{{else}}text{{/if}}"
+    name="{{#if this.name}}{{this.name}}{{else}}field_name{{/if}}"
+    {{#if this.placeholder}}
+      placeholder="{{this.placeholder}}"
+    {{/if}}
+    {{#if this.class}}
+      class="{{this.class}}"
+    {{/if}}
+    {{#if this.id}}
+      id="{{this.id}}"
+    {{/if}}
+    {{#if this.value}}
+      value="{{this.value}}"
+    {{/if}}
+  >
+{{/eq}}
+
+{{#eq this.field_type 'textarea'}}
+  <textarea
+    name="{{this.name}}"
+    id="{{this.textarea_id}}"
+    placeholder="{{this.placeholder}}"
+  >{{#if this.value}}{{this.value}}{{else}}{{/if}}</textarea>
+{{/eq}}
+
+
+{{#eq this.field_type 'errors'}}
+  {{#each this.errors}}
+    <span class="error">{{this}}</span>
+  {{/each}}
 {{/eq}}
 
 {{#eq this.field_type 'label'}}
   <label
     {{#if this.label_for}}for="{{this.label_for}}"{{/if}}
     {{#if this.label_class}}class="{{this.label_class}}"{{/if}}
-    {{#if this.label_id}}id="{{this.label_id}}"{{/if}}
+    {{#if this.label_id}}class="{{this.label_id}}"{{/if}}
     >
     {{this.context}}
   </label>
@@ -26,80 +44,167 @@
 
 
 {{#eq this.field_type 'input-file'}}
-  <div class="input-type-file {{this.field_class}}">
-    <input type="file" name="{{this.name}}" id="{{this.id}}" class="inputfile {{this.input_class}}" data-multiple-caption="{count} files selected"
+  <div class="input-type-file {{this.input_type_class}}">
+    <input type="file" name="{{this.name}}" id="{{this.input_id}}" class="inputfile {{this.input_class}}" data-multiple-caption="{count} files selected"
       multiple />
-    <label for="{{this.id}}" class="primary">
-      <span></span>
+    <label for="{{this.input_id}}" class="primary">
+      <span>{{#if placeholder}}{{placeholder}}{{else}}Selected Files{{/if}}</span>
       <strong class="primary">
-        <i class="fa fa-upload"></i>{{this.field_label}}</strong>
+        <i class="fa fa-upload"></i>{{this.button_label}}</strong>
     </label>
   </div>
 {{/eq }}
 
+{{#eq this.field_type 'form-field-file'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}" {{#if this.field_id}}id="{{field_id}}"{{/if}}>
+    {{> modules/form field_type='label' label_for=this.label_for context=this.field_label label_class=this.label_class label_id=this.label_id}}
+    {{> modules/form field_type='input-file'
+      input_type_class=this.input_type_class
+      name=this.name
+      input_id=this.input_id
+      input_class = this.input_class
+      placeholder= this.placeholder
+      button_label = this.button_label
+    }}
+    {{> modules/form field_type='errors' errors=this.errors}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+  </div>
+{{/eq}}
+
 {{#eq this.field_type 'input-radio'}}
   <div class="radio {{this.parent_class}}">
-    {{> modules/form field_type="input" type="radio" placeholder=this.placeholder class=this.input_class id=this.id }}
-    {{> modules/form field_type="label" label_for=this.id class=this.label_class id=this.label_id context=this.field_label}}
+    {{> modules/form field_type='input'
+      type='radio'
+      name=this.name
+      class=this.input_class  
+      id=this.id
+    }}
+    {{> modules/form field_type='label'
+      label_for= this.id
+      label_class= this.class
+      label_id= this.id
+      context= this.field_label
+    }}
   </div>
 {{/eq }}
 
 {{#eq this.field_type 'input-checkbox'}}
   <div class="checkbox {{this.parent_class}}">
-    {{> modules/form field_type="input" type="checkbox" placeholder=this.placeholder class=this.input_class id=this.id }}
-    {{> modules/form field_type="label" label_for=this.id class=this.label_class id=this.label_id context=this.field_label}}
+    {{> modules/form field_type='input'
+      type='checkbox'
+      name=this.name
+      class=this.input_class  
+      id=this.id
+    }}
+    {{> modules/form field_type='label'
+      label_for= this.id
+      label_class= this.input_class
+      label_id= this.id
+      context= this.field_label
+    }}
   </div>
 {{/eq }}
+
+
+
+{{#eq this.field_type 'form-field-input'}}
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+    {{#if this.field_label}}
+      {{> modules/form field_type='label'
+        label_for=this.label_for
+        context=this.field_label
+        label_class=this.label_class
+        label_id=this.label_id
+      }}
+    {{/if}}
+    {{> modules/form field_type='input' type=this.type name=this.name class=this.input_class id=this.input_id value=this.value}}
+    {{> modules/form field_type='errors' errors=this.errors}}
+  </div>
+{{/eq}}
 
 
 {{#eq this.field_type 'select'}}
   <div class="input-type-select {{this.parent_class}}">
     <select name="{{this.name}}" id="{{this.select_id}}" class="{{this.select_class}}">
       <option value="">{{#if this.placeholder}}{{this.placeholder}}{{else}}Select{{/if}}</option>
-      {{#each this.select_values}}
-        <option value="{{dashcase this}}">{{this}}</option>
-      {{/each}}
+      {{#eq this.typeOf 'array'}}
+        {{#each this.select_values}}
+          <option value="{{dashcase this}}"> {{this}} </option>
+        {{/each}}
+      {{/eq}}
+      {{#eq this.typeOf 'obj'}}
+        {{#or opt_label opt_value}}
+        {{#each this.select_values}}
+          <option value="{{lookup this ../this.opt_value}}"> {{lookup this ../this.opt_label}} </option>
+        {{/each}}
+        {{/or}}
+      {{/eq}}
     </select>
-  </div>
-{{/eq}}
-
-{{#eq this.field_type 'form-field-input'}}
-  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
-    {{#if this.field_label}}
-      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
-    {{/if}}
-    {{> modules/form field_type='input' type=this.type name=this.name class=this.input_class id=this.input_id}}
+    {{> modules/form field_type='errors' errors=this.errors}}
   </div>
 {{/eq}}
 
 {{#eq this.field_type 'form-field-select'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
+      {{> modules/form field_type='label'
+        label_for=this.label_for
+        context=this.field_label
+        label_class=this.label_class
+        label_id=this.label_id
+      }}
     {{/if}}
-    {{> modules/form field_type='select' name=this.name id=this.id class=this.input_class placeholder=this.placeholder}}
+    {{> modules/form field_type='select' name=this.name id=this.id class=this.input_class placeholder=this.placeholder typeOf=this.typeOf select_values=this.select_values opt_value=this.opt_value opt_label=this.opt_label}}
+    {{> modules/form field_type='errors' errors=this.errors}}
   </div>
 {{/eq}}
 
 {{#eq this.field_type 'form-field-textarea'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
+      {{> modules/form field_type='label'
+        label_for=this.label_for
+        context=this.field_label
+        label_class=this.label_class
+        label_id=this.label_id
+      }}
     {{/if}}
-    <textarea name="{{this.name}}" id="{{this.textarea_id}}" placeholder="{{this.placeholder}}"></textarea>
+    {{> modules/form
+      field_type="textarea"
+      id=this.textarea_id
+      class=this.textarea_class
+      name=this.name
+    }}
+    {{> modules/form field_type='errors' errors=this.errors}}
   </div>
 {{/eq}}
 
 
 {{#eq this.field_type 'form-field-datepicker'}}
-  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
+  <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">  
     <label {{#if this.label_class}}class="{{this.label_class}}"{{/if}}> {{#if this.field_label}} {{this.field_label}} {{else}} Datepicker {{/if}}</label>
     <div class="input-group {{this.input_group_class}}">
-      <input type="text" placeholder="Datepicker" data-toggle="datepicker">
+      <input
+        type="{{#if this.type}}{{this.type}}{{else}}text{{/if}}"
+        name="{{#if this.name}}{{this.name}}{{else}}Datepicker{{/if}}"
+        {{#if this.placeholder}}
+          placeholder="{{this.placeholder}}"
+        {{/if}}
+        {{#if this.class}}
+          class="{{this.class}}"
+        {{/if}}
+        {{#if this.id}}
+          id="{{this.id}}"
+        {{/if}}
+        {{#if this.value}}
+          value="{{this.value}}"
+        {{/if}}
+        data-toggle="datepicker"
+      >
       <div class="addon datepicker-trigger">
         <i class="fa fa-calendar"></i>
       </div>
     </div>
+    {{> modules/form field_type='errors' errors=this.errors}}
   </div>
 {{/eq}}
 
@@ -107,18 +212,24 @@
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     <label {{#if this.label_class}}class="{{this.label_class}}" {{/if}}>{{#if this.field_label}} {{this.field_label}} {{else}} Timepicker {{/if}}</label>
     <div class="input-group {{this.input_group_class}}">
-      <input type="text" placeholder="12:00 am" class="timepicker">
+      <input type="text" placeholder="{{this.placeholder}}" class="timepicker">
       <div class="addon timepicker-trigger">
         <i class="fa fa-clock-o"></i>
       </div>
     </div>
+    {{> modules/form field_type='errors' errors=this.errors}}
   </div>
 {{/eq}}
 
 {{#eq this.field_type 'form-field-addon'}}
   <div class="form-field {{#if mandatory}}mandatory{{/if}} {{this.field_class}}">
     {{#if this.field_label}}
-      {{> modules/form field_type='label' context=this.field_label class=this.label_class id=this.label_id}}
+      {{> modules/form field_type='label'
+        label_for=this.label_for
+        context=this.field_label
+        label_class=this.label_class
+        label_id=this.label_id
+      }}
     {{/if}}
     <div class="input-group {{this.input_group_class}}">
       {{#eq this.placement 'start'}}
@@ -130,5 +241,7 @@
         <div class="addon">{{this.addon_text}}</div>
       {{/eq}}
     </div>
+    {{> modules/form field_type='errors' errors=this.errors}}
   </div>
 {{/eq}}
+

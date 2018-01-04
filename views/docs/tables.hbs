@@ -1,0 +1,22 @@
+<table cellspacing="0" width="100%"  class="data-table display">
+  <thead>
+    <tr>
+      <th>Post Id</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>email</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+      <tr>
+        <td>{{this.postId}}</td>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.body}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

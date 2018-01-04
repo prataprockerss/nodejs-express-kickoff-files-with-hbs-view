@@ -1,0 +1,24 @@
+<div class="overlay-box {{this.class}} {{#if overlay_type}} {{overlay_type}} {{/if}}" id='{{this.id}}'>
+  <div class="overlay-bg" onclick="closeOverlay()"></div>
+  <div class="overlay">
+    {{#if this.title}}
+      {{#eq overlay_type 'type-2'}}
+        <header>
+          <div class="back-btn" onclick="closeOverlay()">
+            <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+          </div>
+          <h2>{{this.title}}</h2>
+        </header>
+      {{else}}
+        <header>
+          <h2>{{this.title}}</h2>
+          <div class="back-btn" onclick="closeOverlay()">
+            <i class="fa fa-times-thin fa-2x" aria-hidden="true"></i>
+          </div>
+        </header>
+      {{/eq}}
+    {{/if}}
+    <main>
+      <div class="container">
+
+        

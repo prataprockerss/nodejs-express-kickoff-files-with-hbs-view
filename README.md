@@ -49,3 +49,8 @@ https://github.com/prataprockerss/nodejs-express-kickoff-files-with-hbs-view
 ```
 5. Start using partials and create your files 
 
+## Documention
+
+## User Sniptes
+
+||

@@ -1,3 +1,25 @@
+<div class="search-filter">
+  <div class="grid-layout jc-space-between">
+    <div class="grid-md-4">
+      <div class="form-layout">
+        <form action="">
+          <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button class="search-btn">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="grid-md-4 text-right">
+      <a href="" class="box-btn primary">
+        <i class="fa fa-plus"></i>
+        <span>Add Member</span>
+      </a>
+    </div>
+  </div>
+</div>
 <article class="box">
   <header class="box-header">
     Form Heading
@@ -6,17 +28,33 @@
     <div class="check-form">
       <form action="" method="post" class="check-form">
         <div class="form-layout">
+          <div class='form-row'>
+            {{> modules/form field_type="form-field-select" field_label="select arrary test" typeOf='array' select_values=dob_months}}
+            {{> modules/form field_type="form-field-select" field_label="Slect object test" typeOf="obj" select_values=articles opt_value='url' opt_label='title' }}
+          </div>
           <div class="form-row">
+            {{> modules/form field_type='form-field-textarea' field_label="Description" name="text-area"}}
             {{> modules/form field_type="form-field-input" type="number" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Nuber"}}
             {{> modules/form field_type="form-field-input" type="text" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Text"}}
             {{> modules/form field_type="form-field-input" type="email" name="mobile" mandatory="yes" field_label="Sample Field" placeholder="Input Type Email"}}
           </div>
           <div class="form-row">
-            <div class="form-field grid-6">
-              {{> modules/form field_type="input-file" name='image' id='profile_pic' field_label='Upload Profile Pic'}}
-            </div>
+            {{> modules/form field_type='form-field-input' type='text' name='input_name' mandatory='yes' field_label='Sample_field' placeholder='placeholder_text'}}
+            {{> modules/form field_type='form-field-file'
+              name='name'
+              field_label='Image'
+              input_id='image'
+              button_label='Upload'
+            }}
           </div>
           <div class="form-row">
+            {{> modules/form field_type='form-field-textarea'
+              name='name'
+              mandatory='yes'
+              field_label='label'
+              placeholder='text_placholder'
+              Value='Value'
+            }}
             <div class="form-field">
               <label for="">Gender</label>
               <div class="radios">
@@ -50,11 +88,9 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="form-field mandatory">
-              <label>Label</label>
-              {{> modules/form field_type="select" select_values=dob_days name='dob_day'}}
-            </div>
-            {{> modules/form field_type="form-field-select" field_label="Month" placeholder="Select Month" name="dob_month" select_values=dob_months}}
+              {{> modules/form field_type="form-field-select" field_label="Select with object" select_values=articles typeOf='obj' opt_value='url' opt_label='title' }}
+              {{> modules/form field_type="form-field-select" field_label="Select with Array " select_values=dob_days typeOf='array' placeholder="Select Day"}}
+              {{> modules/form field_type="form-field-select" field_label="Select with Array " select_values=dob_months typeOf='array' placeholder='Select Month'}}
           </div>
           <div class="form-row">
             {{> modules/form field_type="form-field-textarea" name="textarea_name" field_label="Textarea" placeholder="Sample textarea"}}
@@ -66,10 +102,14 @@
             </div>
           </div>
           <div class="form-row">
-            {{> modules/form field_type="form-field-datepicker" mandatory="yes"}}
+            {{> modules/form field_type='form-field-datepicker'
+              name='name'
+              field_label='Datepicker'
+              mandatory='yes'
+              field_class="grid-2"
+            }}
             <div class="sub-form-row grid-8">
               {{> modules/form field_type="form-field-timepicker" mandatory="yes" field_class="grid-3"}}
-              {{> modules/form field_type="form-field-datepicker" mandatory="yes" field_label="Datepicker" field_class="grid-5"}}
               {{> modules/form field_type="form-field-timepicker" mandatory="yes" field_class="grid-4"}}
             </div>
           </div>
@@ -83,6 +123,7 @@
   <header class="box-header">
     Form input group
   </header>
+  
   <main class="box-content">
     <div class="form-layout">
       <div class="form-row">
@@ -116,7 +157,6 @@
   </header>
   <main class="box-content">
     <input type="submit" class="box-btn primary" value="Primary">
-
     <input type="submit" class="box-btn secondary" value="Secondary">
     <input type="submit" class="box-btn success" value=" Success">
     <input type="submit" class="box-btn danger" value="Danger">
